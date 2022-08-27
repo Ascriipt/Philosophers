@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maparigi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/27 14:39:22 by maparigi         ###   ########.fr       */
+/*   Created: 2021/11/25 12:11:41 by maparigi          #+#    #+#             */
+/*   Updated: 2021/12/03 16:28:41 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHISOLOPHERS_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <pthread.h>
-
-typedef struct s_args
+int	ft_isprint(int c)
 {
-	int	nop;
-	int	nof;
-	int	ttd;
-	int	tte;
-	int	tts;
-	int	not;
-}				t_data;
-
-#endif
+	if (c > 31 && c < 127)
+		return (1);
+	return (0);
+}
