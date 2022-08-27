@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/27 15:31:27 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/27 15:55:00 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	att_val(int ac, char **av, t_arg *args)
 	args->tts = ft_atoi(av[4]);
 	if (ac == 6)
 		args->not = ft_atoi(av[5]);
+	else
+		args->not = -1;
 }
 
 int	main(int argc, char **argv)
