@@ -6,11 +6,18 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/27 15:55:00 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/27 17:01:54 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+void	*threadtest(void *id)
+{
+	printf("I am thread %d\n", *(int *)id);
+	usleep(100000);
+	return (id);
+}
 
 void	att_val(int ac, char **av, t_arg *args)
 {
@@ -27,15 +34,23 @@ void	att_val(int ac, char **av, t_arg *args)
 
 int	main(int argc, char **argv)
 {
-	t_arg	args;
+	pthread_t	*philos;
+	t_arg		args;
+	int			i;
 
 	if (argc < 5 || argc > 6)
 		return (1);
 	att_val(argc, argv, &args);
-	printf("nop = %d\n", args.nop);
-	printf("nof = %d\n", args.nof);
-	printf("ttd = %d\n", args.ttd);
-	printf("tte = %d\n", args.tte);
-	printf("tts = %d\n", args.tts);
-	printf("not = %d\n", args.not);
+	philos = malloc(sizeof(philos) * args.nop);
+	if (!philos)
+		return (2);
+	i = -1;
+	while (++i < args.nop)
+	{
+		if (pthread_create(&philos[i], NULL, &threadtest, &i) != 0)
+			return (3);
+		if (pthread_join(philos[i], NULL) != 0)
+			return (4);
+	}
+	free(philos);
 }

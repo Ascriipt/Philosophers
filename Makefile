@@ -6,7 +6,7 @@
 #    By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 16:43:51 by maparigi          #+#    #+#              #
-#    Updated: 2022/08/27 15:19:05 by maparigi         ###   ########.fr        #
+#    Updated: 2022/08/27 16:48:00 by maparigi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRCS =	main.c			\
 OBJS = ${SRCS:.c=.o}
 DEPS = ${SRCS:.c=.d}
 
-CFLAGS = -Wall -Wextra -Werror -MMD -MP
+CFLAGS = -Wall -Wextra -Werror -pthread -MMD -MP
 
 .c.o:
 	@${CC} ${CFLAGS} -I${INC} -c $< -o $@
