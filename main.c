@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/27 15:12:58 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/27 15:31:27 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	main(int argc, char **argv)
 	if (argc < 5 || argc > 6)
 		return (1);
 	att_val(argc, argv, &args);
-	printf("nop = %d", args.nop);
-	printf("nof = %d", args.nof);
-	printf("ttd = %d", args.ttd);
-	printf("tte = %d", args.tte);
-	printf("tts = %d", args.tts);
-	printf("not = %d", args.not);
+	printf("nop = %d\n", args.nop);
+	printf("nof = %d\n", args.nof);
+	printf("ttd = %d\n", args.ttd);
+	printf("tte = %d\n", args.tte);
+	printf("tts = %d\n", args.tts);
+	printf("not = %d\n", args.not);
 }
