@@ -6,7 +6,12 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/26 12:44:29 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/26 12:53:48 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "philosophers.h"
+
+int	main(int argc, char **argv)
+{
+}
