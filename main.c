@@ -6,13 +6,13 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 19:11:28 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:25:07 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	mutex_destroyer(t_philo *philos, int nop)
+int	mutex_destroyer(t_philo *philos, int nop)
 {
 	int	i;
 
@@ -23,7 +23,14 @@ void	mutex_destroyer(t_philo *philos, int nop)
 		printf("is philo status %d\n", (philos[i]).status);
 		printf("is philo laps %d\n", (philos[i]).laps);
 		printf("is philo laps done %d\n", (philos[i]).laps_done);
+		if (pthread_mutex_destroy(&(philos[i].id_fork)) != 0)
+			return (1);
+		if (pthread_mutex_destroy(&(philos[i].lock)) != 0)
+			return (2);
+		if (pthread_mutex_destroy(&(philos[i].aff)) != 0)
+			return (3);
 	}
+	return (0);
 }
 
 void	*threadtest(void *id)
@@ -57,5 +64,6 @@ int	main(int argc, char **argv)
 	philos = init_philos(args.nop);
 	if (philos == NULL)
 		return (2);
+	mutex_destroyer(philos, args.nop);
 	free(philos);
 }
