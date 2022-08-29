@@ -6,11 +6,24 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 21:00:01 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:40:04 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+void	check_forks(t_philo *philo)
+{
+	int	i;
+
+	i = 9;
+	while (--i >= 0)
+	{
+		printf("fork of %d %p\n", i, (void *)&philo[i].id_fork);
+		printf("fork of %d should be %p\n", i - 1, (void *)philo[i].pre_fork);
+		printf("\n");
+	}
+}
 
 int	mutex_destroyer(t_philo *philos, int nop)
 {
@@ -29,16 +42,7 @@ int	mutex_destroyer(t_philo *philos, int nop)
 
 void	*routine(void *philo)
 {
-	t_philo	*data;
-
-	data = (t_philo *)philo;
-	if (pthread_mutex_lock(data->next_fork) != 0)
-		printf("%d is locked\n", data->id + 1);
-	if (pthread_mutex_lock(&data->id_fork) != 0)
-		return (NULL);
-	else
-		printf("%d is not locked\n", data->id);
-	return (NULL);
+	return (philo);
 }
 
 void	att_val(int ac, char **av, t_arg *args)
@@ -65,6 +69,7 @@ int	main(int argc, char **argv)
 	philos = init_philos(args.nop, &args);
 	if (philos == NULL)
 		return (2);
+	check_forks(philos);
 	mutex_destroyer(philos, args.nop);
 	free(philos);
 }

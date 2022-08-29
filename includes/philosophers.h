@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 20:50:36 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:37:05 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_philo
 	int					laps;
 	int					status;
 	int					laps_done;
-	t_mutex				*next_fork;
+	t_mutex				*pre_fork;
 	t_mutex				id_fork;
 	t_mutex				lock;
 	t_arg				args;

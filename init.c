@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:17:13 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 20:48:37 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:39:40 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_mutex(int nop, t_philo *philos)
 	}
 	i = -1;
 	while (++i < nop)
-		philos[(i + 1) % nop].next_fork = &philos[i].id_fork;
+		philos[(i + 1) % nop].pre_fork = &philos[i].id_fork;
 }
 
 t_philo	*init_philos(int nop, t_arg *args)
@@ -49,7 +49,8 @@ t_philo	*init_philos(int nop, t_arg *args)
 	{
 		init_val(i, &philos[i]);
 		philos[i].args = *args;
-		if (pthread_create(&(philos[i].philo_id), NULL, routine, &philos[i]) != 0)
+		if (pthread_create(&(philos[i].philo_id),
+				NULL, routine, &philos[i]) != 0)
 			return (NULL);
 		if (pthread_join(philos[i].philo_id, NULL) != 0)
 			return (NULL);
