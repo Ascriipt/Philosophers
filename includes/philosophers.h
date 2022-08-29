@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/27 17:24:23 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/29 18:25:19 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,9 @@ typedef struct s_args
 	int	tts;
 	int	not;
 }				t_arg;
+
+int		init_philos(int nop, t_philo *philos);
+
+void	*threadtest(void *id);
 
 #endif
