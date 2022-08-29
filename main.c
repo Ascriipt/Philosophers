@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 20:03:38 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/29 21:00:01 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ int	mutex_destroyer(t_philo *philos, int nop)
 	i = 0;
 	while (++i < nop)
 	{
-		printf("is philo id %d\n", (philos[i]).id);
-		printf("is philo status %d\n", (philos[i]).status);
-		printf("is philo laps %d\n", (philos[i]).laps);
-		printf("is philo laps done %d\n", (philos[i]).laps_done);
 		if (pthread_mutex_destroy(&(philos[i].id_fork)) != 0)
 			return (1);
 		if (pthread_mutex_destroy(&(philos[i].lock)) != 0)
@@ -31,9 +27,18 @@ int	mutex_destroyer(t_philo *philos, int nop)
 	return (0);
 }
 
-void	*routine(void *id)
+void	*routine(void *philo)
 {
-	return (id);
+	t_philo	*data;
+
+	data = (t_philo *)philo;
+	if (pthread_mutex_lock(data->next_fork) != 0)
+		printf("%d is locked\n", data->id + 1);
+	if (pthread_mutex_lock(&data->id_fork) != 0)
+		return (NULL);
+	else
+		printf("%d is not locked\n", data->id);
+	return (NULL);
 }
 
 void	att_val(int ac, char **av, t_arg *args)
