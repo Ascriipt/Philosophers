@@ -6,13 +6,27 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 18:26:40 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:03:51 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
 t_mutex	mutex_test;
+
+void	print_philos(t_philo *philos, int nop)
+{
+	int	i;
+
+	i = 0;
+	while (++i < nop)
+	{
+		printf("is philo id %d\n", (philos[i]).id);
+		printf("is philo status %d\n", (philos[i]).status);
+		printf("is philo laps %d\n", (philos[i]).laps);
+		printf("is philo laps done %d\n", (philos[i]).laps_done);
+	}
+}
 
 void	*threadtest(void *id)
 {
@@ -44,11 +58,11 @@ int	main(int argc, char **argv)
 	if (argc < 5 || argc > 6)
 		return (1);
 	att_val(argc, argv, &args);
-	philos = malloc(sizeof(t_philo) * args.nop);
-	if (!philos)
-		return (2);
 	pthread_mutex_init(&mutex_test, NULL);
-	init_philos(args.nop, philos);
+	philos = init_philos(args.nop);
+	if (philos == NULL)
+		return (2);
 	pthread_mutex_destroy(&mutex_test);
+	print_philos(philos, args.nop);
 	free(philos);
 }
