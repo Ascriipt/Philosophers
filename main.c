@@ -6,15 +6,13 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 19:03:51 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:11:28 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-t_mutex	mutex_test;
-
-void	print_philos(t_philo *philos, int nop)
+void	mutex_destroyer(t_philo *philos, int nop)
 {
 	int	i;
 
@@ -30,10 +28,8 @@ void	print_philos(t_philo *philos, int nop)
 
 void	*threadtest(void *id)
 {
-	pthread_mutex_lock(&mutex_test);
 	printf("I am thread %d\n", *(int *)id);
 	usleep(100000);
-	pthread_mutex_unlock(&mutex_test);
 	return (id);
 }
 
@@ -58,11 +54,8 @@ int	main(int argc, char **argv)
 	if (argc < 5 || argc > 6)
 		return (1);
 	att_val(argc, argv, &args);
-	pthread_mutex_init(&mutex_test, NULL);
 	philos = init_philos(args.nop);
 	if (philos == NULL)
 		return (2);
-	pthread_mutex_destroy(&mutex_test);
-	print_philos(philos, args.nop);
 	free(philos);
 }
