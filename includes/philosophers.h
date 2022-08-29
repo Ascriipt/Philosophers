@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 18:44:15 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:57:15 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,6 @@
 
 typedef pthread_mutex_t	t_mutex;
 
-typedef struct s_philo
-{
-	pthread_t			philo_id;
-	int					id;
-	int					laps;
-	int					status;
-	int					laps_done;
-	t_mutex				id_fork;
-	t_mutex				lock;
-	t_mutex				aff;
-}				t_philo;
-
 typedef struct s_args
 {
 	int	nop;
@@ -54,10 +42,22 @@ typedef struct s_args
 	int	not;
 }				t_arg;
 
+typedef struct s_philo
+{
+	pthread_t			philo_id;
+	int					id;
+	int					laps;
+	int					status;
+	int					laps_done;
+	t_mutex				id_fork;
+	t_mutex				lock;
+	t_arg				args;
+}				t_philo;
+
 /*------------------------inits------------------------*/
 
-t_philo		*init_philos(int nop);
+t_philo		*init_philos(int nop, t_arg *args);
 
-void		*threadtest(void *id);
+void		*routine(void *id);
 
 #endif

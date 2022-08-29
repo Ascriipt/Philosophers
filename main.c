@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 19:25:07 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/08/29 19:57:19 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,12 @@ int	mutex_destroyer(t_philo *philos, int nop)
 			return (1);
 		if (pthread_mutex_destroy(&(philos[i].lock)) != 0)
 			return (2);
-		if (pthread_mutex_destroy(&(philos[i].aff)) != 0)
-			return (3);
 	}
 	return (0);
 }
 
-void	*threadtest(void *id)
+void	*routine(void *id)
 {
-	printf("I am thread %d\n", *(int *)id);
-	usleep(100000);
 	return (id);
 }
 
@@ -61,7 +57,7 @@ int	main(int argc, char **argv)
 	if (argc < 5 || argc > 6)
 		return (1);
 	att_val(argc, argv, &args);
-	philos = init_philos(args.nop);
+	philos = init_philos(args.nop, &args);
 	if (philos == NULL)
 		return (2);
 	mutex_destroyer(philos, args.nop);
