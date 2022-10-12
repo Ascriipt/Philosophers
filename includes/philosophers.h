@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 21:37:05 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/10/12 14:58:55 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ typedef struct s_philo
 
 /*------------------------inits------------------------*/
 
-t_philo		*init_philos(int nop, t_arg *args);
+t_philo						*init_philos(int nop, t_arg *args);
 
-void		*routine(void *philo);
+void						*routine(void *philo);
+
+long unsigned int			get_time(void);
 
 #endif
