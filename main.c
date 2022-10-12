@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/08/29 21:40:04 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/10/12 14:13:41 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_forks(t_philo *philo)
 {
 	int	i;
 
-	i = 9;
+	i = philo->args.nop;
 	while (--i >= 0)
 	{
 		printf("fork of %d %p\n", i, (void *)&philo[i].id_fork);
