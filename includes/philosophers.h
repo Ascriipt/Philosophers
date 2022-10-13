@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/10/12 14:58:55 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/10/13 16:30:40 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,13 @@ t_philo						*init_philos(int nop, t_arg *args);
 void						*routine(void *philo);
 
 long unsigned int			get_time(void);
+
+/*-----------------------actions-----------------------*/
+
+void						thinking(t_philo philo);
+void						sleeping(t_philo philo);
+void						forking(t_philo philo);
+void						is_dead(t_philo philo);
+void						eating(t_philo philo);
 
 #endif
