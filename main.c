@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/10/12 15:53:22 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:49:07 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ int	mutex_destroyer(t_philo *philos, int nop)
 void	*routine(void *philo)
 {
 	get_time();
-	usleep(37400);
-	printf("timestamp : %ld\n", get_time());
+	sleeping(philo);
 	return (philo);
 }
 
@@ -72,7 +71,6 @@ int	main(int argc, char **argv)
 	philos = init_philos(args.nop, &args);
 	if (philos == NULL)
 		return (2);
-	check_forks(philos);
 	mutex_destroyer(philos, args.nop);
 	free(philos);
 }

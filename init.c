@@ -6,11 +6,23 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:17:13 by maparigi          #+#    #+#             */
-/*   Updated: 2022/10/13 16:25:53 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:41:21 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/philosophers.h"
+
+void	philo_print(t_philo *philo, const char *text)
+{
+	pthread_mutex_lock(&(philo->lock));
+	if (philo->status == DEAD)
+	{
+		pthread_mutex_unlock(&(philo->lock));
+		return ;
+	}
+	printf("%lu %d %s\n", get_time(), philo->id, text);
+	pthread_mutex_unlock(&(philo->lock));
+}
 
 void	init_val(int i, t_philo *philo)
 {
@@ -28,9 +40,9 @@ void	init_mutex(int nop, t_philo *philos)
 	while (++i < nop)
 	{
 		if (pthread_mutex_init(&(philos[i].id_fork), NULL) != 0)
-			return (NULL);
+			return ;
 		if (pthread_mutex_init(&(philos[i].lock), NULL) != 0)
-			return (NULL);
+			return ;
 	}
 	i = -1;
 	while (++i < nop)

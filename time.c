@@ -6,11 +6,19 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:16:39 by maparigi          #+#    #+#             */
-/*   Updated: 2022/10/12 14:59:15 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:54:41 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+void	stopwatch(long unsigned int time_in_ms, t_philo *philo)
+{
+	pthread_mutex_lock(&(philo->lock));
+	if (philo->status == ALIVE)
+		usleep(time_in_ms);
+	pthread_mutex_unlock(&(philo->lock));
+}
 
 long unsigned int	get_time(void)
 {

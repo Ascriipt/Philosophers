@@ -6,7 +6,7 @@
 #    By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 16:43:51 by maparigi          #+#    #+#              #
-#    Updated: 2022/10/12 14:59:39 by maparigi         ###   ########.fr        #
+#    Updated: 2022/10/13 17:37:34 by maparigi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ LIBFT = ${LIBFT_PATH}libft.a
 SRCS =	main.c			\
 		init.c			\
 		time.c			\
+		actions.c		\
 
 OBJS = ${SRCS:.c=.o}
 DEPS = ${SRCS:.c=.d}
