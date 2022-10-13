@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Matteo <Matteo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/10/13 17:30:47 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:52:55 by Matteo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
-# define PHISOLOPHERS_H
+# define PHILOSOPHERS_H
 
 # include <stdio.h>
 # include <unistd.h>
