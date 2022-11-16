@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Matteo <Matteo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/10/13 23:02:31 by Matteo           ###   ########.fr       */
+/*   Updated: 2022/11/17 00:54:33 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	sleeping(t_philo *philo)
 {
 	philo_print(philo, "is sleeping");
 	stopwatch(philo->args.tts, philo);
+	philo_print(philo, "finished sleeping");
 }
 
 //void	is_dead(t_philo *philo)
