@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:17:13 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/17 00:55:07 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/17 02:16:43 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	init_val(int i, t_philo *philo)
 	philo->id = i;
 	philo->laps = 0;
 	philo->laps_done = 0;
+	philo->last_meal = get_time();
 	philo->status = ALIVE;
 }
 

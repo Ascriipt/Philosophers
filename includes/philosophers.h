@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Matteo <Matteo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/10/13 21:52:55 by Matteo           ###   ########.fr       */
+/*   Updated: 2022/11/17 02:06:58 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_philo
 	int					laps;
 	int					status;
 	int					laps_done;
+	int					last_meal;
 	t_mutex				*pre_fork;
 	t_mutex				id_fork;
 	t_mutex				lock;
@@ -75,7 +76,12 @@ void						philo_print(t_philo *philo, const char *text);
 void						thinking(t_philo *philo);
 void						sleeping(t_philo *philo);
 void						forking(t_philo *philo);
-void						is_dead(t_philo *philo);
 void						eating(t_philo *philo);
+
+int							is_dead(t_philo *philo);
+
+/*------------------------utils------------------------*/
+
+void						sepuku(t_philo *philo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/17 00:58:15 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/17 02:10:20 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ void	sleeping(t_philo *philo)
 	philo_print(philo, "finished sleeping");
 }
 
-//void	is_dead(t_philo *philo)
-//{
-//}
+int	is_dead(t_philo *philo)
+{
+	if (get_time() - philo->last_meal >= (long unsigned int)philo->args.ttd)
+	{
+		//sepuku(philo);
+		pthread_mutex_unlock(&philo->id_fork);
+		return (-1);
+	}
+	return (1);
+}
