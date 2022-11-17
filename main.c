@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/17 00:57:24 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/17 01:03:39 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ int	main(int argc, char **argv)
 	t_arg		args;
 
 	if (argc < 5 || argc > 6)
+	{
+		printf("Error : invalid number of arguments\n");
 		return (1);
+	}
 	att_val(argc, argv, &args);
 	philos = init_philos(args.nop, &args);
 	if (philos == NULL)
