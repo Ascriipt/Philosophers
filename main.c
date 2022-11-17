@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Matteo <Matteo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/10/13 21:59:22 by Matteo           ###   ########.fr       */
+/*   Updated: 2022/11/17 00:57:24 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	mutex_destroyer(t_philo *philos, int nop)
 
 void	*routine(void *philo)
 {
-	get_time();
 	sleeping(philo);
 	return (philo);
 }
