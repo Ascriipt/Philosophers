@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 01:34:27 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/17 02:26:06 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/17 02:47:24 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	sepuku(t_philo *philo)
 {
-	//pthread_mutex_lock(&philo->lock);
-	philo_print(philo, "has died");
+	pthread_mutex_lock(&philo->lock);
+	printf("{%lu} %d %s\n", get_time(), philo->id + 1, "has died");
 	philo->status = DEAD;
-	//pthread_mutex_unlock(&philo->lock);
+	pthread_mutex_unlock(&philo->lock);
 }
