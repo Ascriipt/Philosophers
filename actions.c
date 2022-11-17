@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/17 02:10:20 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/17 02:19:56 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	is_dead(t_philo *philo)
 {
 	if (get_time() - philo->last_meal >= (long unsigned int)philo->args.ttd)
 	{
-		//sepuku(philo);
+		sepuku(philo);
 		pthread_mutex_unlock(&philo->id_fork);
 		return (-1);
 	}
