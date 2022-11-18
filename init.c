@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:17:13 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/17 02:45:06 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:47:42 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,25 @@ void	init_mutex(int nop, t_philo *philos)
 
 t_philo	*init_philos(int nop, t_arg *args)
 {
-	t_philo	*philos;
 	int		i;
 
 	i = -1;
-	philos = malloc(sizeof(t_philo) * nop);
-	if (!philos)
+	args->philo = malloc(sizeof(t_philo) * nop);
+	if (!args->philo)
 		return (NULL);
-	init_mutex(nop, philos);
+	init_mutex(nop, args->philo);
 	while (++i < nop)
 	{
-		init_val(i, &philos[i]);
-		philos[i].args = *args;
-		if (pthread_create(&(philos[i].philo_id),
-				NULL, routine, &philos[i]) != 0)
+		init_val(i, &args->philo[i]);
+		if (pthread_create(&(args->philo[i].philo_id),
+				NULL, routine, (void *)args) != 0)
 			return (NULL);
 	}
 	i = -1;
 	while (++i < nop)
 	{
-		if (pthread_join(philos[i].philo_id, NULL) != 0)
+		if (pthread_join(args->philo[i].philo_id, NULL) != 0)
 			return (NULL);
 	}
-	return (philos);
+	return (args->philo);
 }

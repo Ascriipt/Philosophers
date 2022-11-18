@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/18 18:21:16 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:43:48 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,6 @@
 
 typedef pthread_mutex_t	t_mutex;
 
-typedef struct s_args
-{
-	int	nop;
-	int	nof;
-	int	ttd;
-	int	tte;
-	int	tts;
-	int	not;
-}				t_arg;
-
 typedef struct s_philo
 {
 	pthread_t			philo_id;
@@ -53,8 +43,18 @@ typedef struct s_philo
 	t_mutex				*pre_fork;
 	t_mutex				id_fork;
 	t_mutex				lock;
-	t_arg				args;
 }				t_philo;
+
+typedef struct s_args
+{
+	int		nop;
+	int		nof;
+	int		ttd;
+	int		tte;
+	int		tts;
+	int		not;
+	t_philo	*philo;
+}				t_arg;
 
 /*------------------------inits------------------------*/
 
@@ -74,11 +74,11 @@ long unsigned int			get_time(void);
 void						philo_print(t_philo *philo, const char *text);
 
 void						thinking(t_philo *philo);
-void						sleeping(t_philo *philo);
+void						sleeping(t_arg *argph);
 void						eating(t_philo *philo);
 
 int							forking(t_philo *philo);
-int							is_dead(t_philo *philo);
+int							is_dead(t_arg *argph);
 
 /*------------------------utils------------------------*/
 

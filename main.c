@@ -6,21 +6,22 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/17 20:09:13 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/18 20:13:34 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	check_forks(t_philo *philo)
+void	check_forks(t_arg *argph)
 {
 	int	i;
 
-	i = philo->args.nop;
+	i = argph->nop;
 	while (--i >= 0)
 	{
-		printf("fork of %d %p\n", i, (void *)&philo[i].id_fork);
-		printf("fork of %d should be %p\n", i - 1, (void *)philo[i].pre_fork);
+		printf("fork of %d %p\n", i, (void *)&argph->philo[i].id_fork);
+		printf("fork of %d should be %p\n", i - 1,
+			(void *)argph->philo[i].pre_fork);
 		printf("\n");
 	}
 }
@@ -40,14 +41,14 @@ int	mutex_destroyer(t_philo *philos, int nop)
 	return (0);
 }
 
-void	*routine(void *philo)
+void	*routine(void *argph)
 {
-	while (is_dead(philo))
+	while (is_dead(argph))
 	{
-		if (is_dead(philo))
-			sleeping(philo);
+		if (is_dead(argph))
+			sleeping(argph);
 	}
-	return (philo);
+	return (argph);
 }
 
 void	att_val(int ac, char **av, t_arg *args)
@@ -65,7 +66,6 @@ void	att_val(int ac, char **av, t_arg *args)
 
 int	main(int argc, char **argv)
 {
-	t_philo		*philos;
 	t_arg		args;
 
 	if (argc < 5 || argc > 6)
@@ -74,9 +74,9 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	att_val(argc, argv, &args);
-	philos = init_philos(args.nop, &args);
-	if (philos == NULL)
+	args.philo = init_philos(args.nop, &args);
+	if (args.philo == NULL)
 		return (2);
-	mutex_destroyer(philos, args.nop);
-	free(philos);
+	mutex_destroyer(args.philo, args.nop);
+	free(args.philo);
 }
