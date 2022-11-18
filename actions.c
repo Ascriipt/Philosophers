@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/17 02:54:05 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:16:32 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@
 //{
 //}
 
-void	forking(t_philo *philo)
+int	forking(t_philo *philo)
 {
-	if (philo->id == 0)
+	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->pre_fork);
 		pthread_mutex_lock(&philo->id_fork);
+		return (1);
 	}
 	else
 	{
-		pthread_mutex_lock(&(philo->id_fork));
-		if (pthread_mutex_lock(philo->pre_fork) == 0)
-			return ;
-		pthread_mutex_unlock(&(philo->id_fork));
-		return ;
+		pthread_mutex_lock(&philo->id_fork);
+		pthread_mutex_lock(philo->pre_fork);
+		return (2);
 	}
+	return (0);
 }
 
 void	sleeping(t_philo *philo)
