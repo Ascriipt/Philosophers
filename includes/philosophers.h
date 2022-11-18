@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/17 02:06:58 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/18 18:21:16 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void						philo_print(t_philo *philo, const char *text);
 
 void						thinking(t_philo *philo);
 void						sleeping(t_philo *philo);
-void						forking(t_philo *philo);
 void						eating(t_philo *philo);
 
+int							forking(t_philo *philo);
 int							is_dead(t_philo *philo);
 
 /*------------------------utils------------------------*/
