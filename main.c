@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/22 23:28:08 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/23 00:13:36 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	*routine(void *philo)
 		if (is_dead(philo))
 			sleeping(philo);
 	}
-	return (philo);
+	return (0);
 }
 
 void	att_val(int ac, char **av, t_arg *args)

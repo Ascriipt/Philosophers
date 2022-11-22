@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 01:34:27 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/22 22:17:07 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/23 00:14:48 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	ft_atoi(const char *nptr)
 
 void	sepuku(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->lock);
+	pthread_mutex_lock(&(philo->args->s_lock));
 	printf("{%lu} %d %s\n", get_time(), philo->id + 1, "has died");
 	philo->status = DEAD;
-	pthread_mutex_unlock(&philo->lock);
+	pthread_mutex_unlock(&(philo->args->s_lock));
 }
