@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/23 00:23:30 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/23 00:33:27 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	eating(t_philo *philo)
 {
+	if (forking(philo) != 0)
+		usleep(philo->args->tte * 1000);
 }
 
 void	thinking(t_philo *philo)
