@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/18 19:43:48 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/22 23:31:13 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 # include <sys/time.h>
 # include <sys/types.h>
 
-# include "libft.h"
-
 # define DEAD -1
 # define ALIVE 0
 # define SLEEPING 1
 # define EATING 2
 
 typedef pthread_mutex_t	t_mutex;
+
+typedef struct s_args	t_arg;
 
 typedef struct s_philo
 {
@@ -43,6 +43,7 @@ typedef struct s_philo
 	t_mutex				*pre_fork;
 	t_mutex				id_fork;
 	t_mutex				lock;
+	t_arg				*args;
 }				t_philo;
 
 typedef struct s_args
@@ -60,7 +61,7 @@ typedef struct s_args
 
 t_philo						*init_philos(int nop, t_arg *args);
 
-void						*routine(void *philo);
+void						*routine(void *argph);
 
 /*------------------------time-------------------------*/
 
@@ -74,13 +75,15 @@ long unsigned int			get_time(void);
 void						philo_print(t_philo *philo, const char *text);
 
 void						thinking(t_philo *philo);
-void						sleeping(t_arg *argph);
+void						sleeping(t_philo *philo);
 void						eating(t_philo *philo);
 
 int							forking(t_philo *philo);
-int							is_dead(t_arg *argph);
+int							is_dead(t_philo *philo);
 
 /*------------------------utils------------------------*/
+
+int							ft_atoi(const char *nptr);
 
 void						sepuku(t_philo *philo);
 

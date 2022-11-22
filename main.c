@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/18 20:13:34 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/22 23:28:08 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ int	mutex_destroyer(t_philo *philos, int nop)
 	return (0);
 }
 
-void	*routine(void *argph)
+void	*routine(void *philo)
 {
-	while (is_dead(argph))
+	while (is_dead(philo))
 	{
-		if (is_dead(argph))
-			sleeping(argph);
+		if (is_dead(philo))
+			sleeping(philo);
 	}
-	return (argph);
+	return (philo);
 }
 
 void	att_val(int ac, char **av, t_arg *args)

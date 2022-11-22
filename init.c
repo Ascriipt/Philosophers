@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:17:13 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/18 19:47:42 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/22 23:23:37 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ t_philo	*init_philos(int nop, t_arg *args)
 	init_mutex(nop, args->philo);
 	while (++i < nop)
 	{
+		args->philo[i].args = args;
 		init_val(i, &args->philo[i]);
 		if (pthread_create(&(args->philo[i].philo_id),
-				NULL, routine, (void *)args) != 0)
+				NULL, routine, (void *)&args->philo[i]) != 0)
 			return (NULL);
 	}
 	i = -1;

@@ -6,7 +6,7 @@
 #    By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 16:43:51 by maparigi          #+#    #+#              #
-#    Updated: 2022/11/17 01:34:22 by maparigi         ###   ########.fr        #
+#    Updated: 2022/11/22 22:15:45 by maparigi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,6 @@ CC = gcc
 
 INC =	./includes
 
-LIBFT_PATH = ./libft/
-LIBFT = ${LIBFT_PATH}libft.a
-
 SRCS =	main.c			\
 		init.c			\
 		time.c			\
@@ -46,15 +43,12 @@ CFLAGS = -Wall -Wextra -Werror -pthread -MMD -MP
 .c.o:
 	@${CC} ${CFLAGS} -I${INC} -c $< -o $@
 
-all:	${LIBFT} ${NAME}
+all:	${NAME}
 
 ${NAME}: ${OBJS}
 	@echo "${Red}Compiling${NC} : ${Purple}${NAME}${NC}"
-	${CC} ${OBJS} ${CFLAGS} ${LIBFT} -o ${NAME}
+	${CC} ${OBJS} ${CFLAGS} -o ${NAME}
 	@echo "${Purple}${NAME}${NC} : has been successfully compiled."
-
-${LIBFT}:
-	@make -sC libft
 
 val:	${NAME}
 	valgrind \
@@ -66,11 +60,9 @@ val:	${NAME}
 
 clean:
 	@rm -f ${OBJS} ${DEPS}
-	@make -sC libft clean
 
 fclean: clean
 	@rm -f ${NAME}
-	@make -sC libft fclean
 
 aclean: all clean
 

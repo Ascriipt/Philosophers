@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/18 19:54:00 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/22 23:28:45 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ int	forking(t_philo *philo)
 	return (0);
 }
 
-void	sleeping(t_arg *argph)
+void	sleeping(t_philo *philo)
 {
-	philo_print(argph->philo, "is sleeping");
-	stopwatch(argph->tts, argph->philo);
-	philo_print(argph->philo, "finished sleeping");
+	philo_print(philo, "is sleeping");
+	stopwatch(philo->args->tts, philo);
+	philo_print(philo, "finished sleeping");
 }
 
-int	is_dead(t_arg *argph)
+int	is_dead(t_philo *philo)
 {
-	if (get_time() - argph->philo->last_meal >= (long unsigned int)argph->ttd)
+	if (get_time() - philo->last_meal >= (long unsigned int)philo->args->ttd)
 	{
-		sepuku(argph->philo);
-		pthread_mutex_unlock(&argph->philo->id_fork);
+		sepuku(philo);
+		pthread_mutex_unlock(&philo->id_fork);
 		return (0);
 	}
 	return (1);
