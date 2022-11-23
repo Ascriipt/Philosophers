@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/23 00:33:27 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:32:15 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 void	eating(t_philo *philo)
 {
 	if (forking(philo) != 0)
+	{
 		usleep(philo->args->tte * 1000);
+		philo->last_meal = get_time();
+		philo->laps_done++;
+		pthread_mutex_unlock(philo->pre_fork);
+		pthread_mutex_unlock(&philo->id_fork);
+	}
 }
 
 void	thinking(t_philo *philo)
