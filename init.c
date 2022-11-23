@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:17:13 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/23 00:04:41 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/24 00:49:21 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_val(int i, t_philo *philo)
 	philo->status = ALIVE;
 }
 
-void	init_mutex(int nop, t_philo *philos)
+int	init_mutex(int nop, t_philo *philos)
 {
 	int	i;
 
@@ -41,13 +41,14 @@ void	init_mutex(int nop, t_philo *philos)
 	while (++i < nop)
 	{
 		if (pthread_mutex_init(&(philos[i].id_fork), NULL) != 0)
-			return ;
+			return (1);
 		if (pthread_mutex_init(&(philos[i].lock), NULL) != 0)
-			return ;
+			return (1);
 	}
 	i = -1;
 	while (++i < nop)
 		philos[(i + 1) % nop].pre_fork = &philos[i].id_fork;
+	return (0);
 }
 
 t_philo	*init_philos(int nop, t_arg *args)
@@ -58,7 +59,10 @@ t_philo	*init_philos(int nop, t_arg *args)
 	args->philo = malloc(sizeof(t_philo) * nop);
 	if (!args->philo)
 		return (NULL);
-	init_mutex(nop, args->philo);
+	if (pthread_mutex_init(&(args->s_lock), NULL) != 0)
+		return (NULL);
+	if (init_mutex(nop, args->philo) == 1)
+		return (NULL);
 	while (++i < nop)
 	{
 		args->philo[i].args = args;
