@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/24 00:32:15 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/24 01:33:19 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	eating(t_philo *philo)
 {
 	if (forking(philo) != 0)
 	{
+		philo_print(philo, "is eating");
 		usleep(philo->args->tte * 1000);
 		philo->last_meal = get_time();
 		philo->laps_done++;
@@ -54,7 +55,6 @@ void	sleeping(t_philo *philo)
 {
 	philo_print(philo, "is sleeping");
 	stopwatch(philo->args->tts, philo);
-	philo_print(philo, "finished sleeping");
 }
 
 int	is_dead(t_philo *philo)
