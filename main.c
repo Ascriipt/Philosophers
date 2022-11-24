@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/24 02:38:32 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/24 05:23:09 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,15 @@ void	*routine(void *philo)
 {
 	while (is_dead(philo))
 	{
-		if (is_dead(philo))
-			eating(philo);
-		if (is_dead(philo))
-			sleeping(philo);
-		if (is_dead(philo))
-			thinking(philo);
+		if (!is_dead(philo))
+			break ;
+		eating(philo);
+		if (!is_dead(philo))
+			break ;
+		sleeping(philo);
+		if (!is_dead(philo))
+			break ;
+		thinking(philo);
 	}
 	return (0);
 }
