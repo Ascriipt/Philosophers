@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/23 00:32:00 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/24 02:38:32 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	*routine(void *philo)
 			eating(philo);
 		if (is_dead(philo))
 			sleeping(philo);
+		if (is_dead(philo))
+			thinking(philo);
 	}
 	return (0);
 }
