@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/24 05:23:09 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:00:47 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,21 @@ void	*routine(void *philo)
 	while (is_dead(philo))
 	{
 		if (!is_dead(philo))
-			break ;
+			return (philo);
 		eating(philo);
 		if (!is_dead(philo))
-			break ;
+			return (philo);
 		sleeping(philo);
 		if (!is_dead(philo))
-			break ;
+			return (philo);
 		thinking(philo);
 	}
-	return (0);
+	return (philo);
 }
 
 void	att_val(int ac, char **av, t_arg *args)
 {
+	args->d_id = -1;
 	args->nop = ft_atoi(av[1]);
 	args->nof = ft_atoi(av[1]);
 	args->ttd = ft_atoi(av[2]);

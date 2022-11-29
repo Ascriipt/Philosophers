@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:17:13 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/24 05:20:52 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:05:28 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	philo_print(t_philo *philo, const char *text)
 {
 	pthread_mutex_lock(&(philo->args->s_lock));
-	if (philo->status == DEAD)
+	if (philo->status == DEAD || philo->args->d_id != -1)
 	{
 		pthread_mutex_unlock(&(philo->args->s_lock));
 		return ;

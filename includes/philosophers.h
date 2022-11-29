@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/23 00:02:24 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:47:17 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_philo
 
 typedef struct s_args
 {
+	int		d_id;
 	int		nop;
 	int		nof;
 	int		ttd;
