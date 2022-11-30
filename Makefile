@@ -6,7 +6,7 @@
 #    By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 16:43:51 by maparigi          #+#    #+#              #
-#    Updated: 2022/11/23 00:18:21 by maparigi         ###   ########.fr        #
+#    Updated: 2022/11/30 22:11:09 by maparigi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,8 @@ val:	${NAME}
 
 clean:
 	@rm -f ${OBJS} ${DEPS}
+	@rm -rdf objects dependencies
+	# @rm -dfi objects dependencies
 
 fclean: clean
 	@rm -f ${NAME}
@@ -68,6 +70,14 @@ aclean: all clean
 
 re: fclean all
 
+poubelle:
+	@mkdir -p objects
+	@mkdir -p dependencies
+
+menage: poubelle
+	@mv -f ${OBJS} objects
+	@mv -f ${DEPS} dependencies
+
 -include : $(DEPS)
 
-.PHONY: all clean fclean re bonus aclean val
+.PHONY: all clean fclean re bonus aclean val poubelle menage
