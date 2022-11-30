@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/29 21:44:20 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/11/30 20:03:25 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ int	is_dead(t_philo *philo)
 		philo->args->d_id = philo->id + 1;
 		return (0);
 	}
+	if (philo->args->d_id != -1)
+		return (0);
 	return (1);
 }
