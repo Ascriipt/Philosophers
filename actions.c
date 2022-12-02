@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/30 20:03:25 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/02 02:01:50 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void	sleeping(t_philo *philo)
 
 int	is_dead(t_philo *philo)
 {
+	printf("get_time() : %lu\n", get_time());
+	printf("last meal : %d\n", philo->last_meal);
+	printf("is dead ? : %ld\n", get_time() - philo->last_meal);
+	printf("time to die : %d\n", philo->args->ttd);
 	if (get_time() - philo->last_meal >= (long unsigned int)philo->args->ttd)
 	{
 		if (philo->args->d_id != -1)

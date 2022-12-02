@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/30 19:31:53 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/02 01:20:06 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,11 @@ int	main(int argc, char **argv)
 	t_arg		args;
 
 	if (argc < 5 || argc > 6)
-	{
-		printf("Error : invalid number of arguments\n");
-		return (1);
-	}
+		return (printf("Error : invalid number of arguments\n"));
 	att_val(argc, argv, &args);
 	args.philo = init_philos(args.nop, &args);
 	if (args.philo == NULL)
-		return (2);
+		return (printf("Error : malloc failed\n"));
 	mutex_destroyer(args.philo, args.nop);
 	free(args.philo);
 }

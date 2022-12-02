@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:17:13 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/29 21:05:28 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/02 01:09:21 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@ void	philo_print(t_philo *philo, const char *text)
 	}
 	printf("[%lu] {%d} %s\n", get_time(), philo->id + 1, text);
 	pthread_mutex_unlock(&(philo->args->s_lock));
+}
+
+int	init_mutex_args(t_arg *args)
+{
+	if (pthread_mutex_init(&(args->s_lock), NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&(args->death), NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&(args->food), NULL) != 0)
+		return (1);
+	return (0);
 }
 
 void	init_val(int i, t_philo *philo)
@@ -59,7 +70,7 @@ t_philo	*init_philos(int nop, t_arg *args)
 	args->philo = malloc(sizeof(t_philo) * nop);
 	if (!args->philo)
 		return (NULL);
-	if (pthread_mutex_init(&(args->s_lock), NULL) != 0)
+	if (init_mutex_args(args))
 		return (NULL);
 	if (init_mutex(nop, args->philo) == 1)
 		return (NULL);

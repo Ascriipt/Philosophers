@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/29 20:47:17 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/02 01:03:15 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_args
 	int		tte;
 	int		tts;
 	int		not;
+	t_mutex	death;
+	t_mutex	food;
 	t_mutex	s_lock;
 	t_philo	*philo;
 }				t_arg;
