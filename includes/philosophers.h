@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/02 04:32:37 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/02 05:08:22 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int							is_dead(t_philo *philo);
 
 /*------------------------utils------------------------*/
 
+int							one_philo(t_philo *philo);
 int							ft_atoi(const char *nptr);
 
 void						sepuku(t_philo *philo);

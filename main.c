@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/02 04:43:14 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/02 05:21:00 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,6 @@ void	check_forks(t_arg *argph)
 	}
 }
 
-void	ft_usleep(unsigned long time, t_philo *philo)
-{
-	unsigned long	start;
-
-	start = get_time();
-	// printf("time to eat %lu\n", time);
-	while (get_time() - start < time && is_dead(philo))
-		usleep(50);
-}
-
 int	mutex_destroyer(t_philo *philos, int nop)
 {
 	int	i;
@@ -53,6 +43,11 @@ int	mutex_destroyer(t_philo *philos, int nop)
 
 void	*routine(void *philo)
 {
+	if (((t_philo *)philo)->args->nop == 1)
+	{
+		one_philo(philo);
+		return (NULL);
+	}
 	while (is_dead(philo))
 	{
 		if (!is_dead(philo))

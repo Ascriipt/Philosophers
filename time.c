@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:16:39 by maparigi          #+#    #+#             */
-/*   Updated: 2022/11/24 01:30:12 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/02 05:03:38 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,13 @@ long unsigned int	get_time(void)
 		time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000) - init_time;
 	}
 	return (time);
+}
+
+void	ft_usleep(unsigned long time, t_philo *philo)
+{
+	unsigned long	start;
+
+	start = get_time();
+	while (get_time() - start < time && is_dead(philo))
+		usleep(50);
 }
