@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/02 01:03:15 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/02 04:32:37 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ void						stopwatch(long unsigned int time_in_ms,
 								t_philo *philo);
 
 long unsigned int			get_time(void);
+
+void						ft_usleep(long unsigned int time_in_ms,
+								t_philo *philo);
 
 /*-----------------------actions-----------------------*/
 
