@@ -6,33 +6,35 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 01:34:27 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/03 01:38:09 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/03 01:50:36 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(char *nptr)
 {
-	int	r;
-	int	atoi;
+	long	i;
+	long	s;
+	long	sum;
 
-	r = 1;
-	atoi = 0;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
+	i = 0;
+	s = 1;
+	sum = 0;
+	while (nptr[i] && (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13)))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		if (*nptr == '-')
-			r *= -1;
-		nptr++;
+		if (nptr[i] == '-')
+			s = -1;
+		i++;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		atoi = atoi * 10 + *nptr - '0';
-		nptr++;
+		sum = sum * 10 + (nptr[i] - '0');
+		i++;
 	}
-	return (atoi * r);
+	return (sum * s);
 }
 
 int	one_philo(t_philo *philo)

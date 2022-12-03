@@ -6,25 +6,11 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:12 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/02 05:21:00 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/03 01:49:23 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-void	check_forks(t_arg *argph)
-{
-	int	i;
-
-	i = argph->nop;
-	while (--i >= 0)
-	{
-		printf("fork of %d %p\n", i, (void *)&argph->philo[i].id_fork);
-		printf("fork of %d should be %p\n", i - 1,
-			(void *)argph->philo[i].pre_fork);
-		printf("\n");
-	}
-}
 
 int	mutex_destroyer(t_philo *philos, int nop)
 {
@@ -83,6 +69,8 @@ int	main(int argc, char **argv)
 
 	if (argc < 5 || argc > 6)
 		return (printf("Error : invalid number of arguments\n"));
+	if (check_arg(argv) == 0)
+		return (printf("Error : invalid arguments\n"));
 	att_val(argc, argv, &args);
 	args.philo = init_philos(args.nop, &args);
 	if (args.philo == NULL)
