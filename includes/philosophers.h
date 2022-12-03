@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 12:44:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/02 05:08:22 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/03 01:10:56 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_args
 
 t_philo						*init_philos(int nop, t_arg *args);
 
+void						init_val(int i, t_philo *philo);
 void						*routine(void *argph);
 
 /*------------------------time-------------------------*/
@@ -93,6 +94,7 @@ int							is_dead(t_philo *philo);
 int							one_philo(t_philo *philo);
 int							ft_atoi(const char *nptr);
 
+void						create_threads(t_arg *args);
 void						sepuku(t_philo *philo);
 
 #endif

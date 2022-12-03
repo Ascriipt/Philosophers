@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:16:39 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/02 05:03:38 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/02 23:45:04 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void	ft_usleep(unsigned long time, t_philo *philo)
 
 	start = get_time();
 	while (get_time() - start < time && is_dead(philo))
-		usleep(50);
+		usleep(100);
 }

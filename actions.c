@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/02 05:17:50 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/03 01:15:08 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	thinking(t_philo *philo)
 
 int	forking(t_philo *philo)
 {
-	if (philo->id % 2 == 0)
+	if ((philo->id + 1) % 2 == 0)
 	{
 		pthread_mutex_lock(philo->pre_fork);
 		philo_print(philo, "has taken a fork");
