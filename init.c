@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 18:17:13 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/03 01:59:49 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/03 18:00:11 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ t_philo	*init_philos(int nop, t_arg *args)
 {
 	int		i;
 
-	i = -1;
 	args->philo = malloc(sizeof(t_philo) * nop);
 	if (!args->philo)
 		return (NULL);
