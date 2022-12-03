@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 01:34:27 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/03 01:36:43 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/03 01:38:09 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	ft_atoi(const char *nptr)
 int	one_philo(t_philo *philo)
 {
 	printf("[%ld] {1} has taken a fork\n", get_time());
-	ft_usleep(philo->args->ttd, philo);
+	usleep(philo->args->ttd * 1000);
+	sepuku(philo);
 	return (0);
 }
 
