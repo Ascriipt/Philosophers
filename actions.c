@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 19:42:50 by maparigi          #+#    #+#             */
-/*   Updated: 2022/12/03 01:15:08 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/12/03 01:40:59 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	forking(t_philo *philo)
 void	sleeping(t_philo *philo)
 {
 	philo_print(philo, "is sleeping");
-	stopwatch(philo->args->tts, philo);
+	ft_usleep(philo->args->tts, philo);
 }
 
 int	is_dead(t_philo *philo)
